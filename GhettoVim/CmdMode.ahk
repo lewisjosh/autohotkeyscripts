@@ -34,6 +34,16 @@ g::
 		SendInput, {Ctrl down}{Home}{Ctrl up}
 return
 
+; Map clipboard related
+y::Send ^c
++y::Send ^c
+d::Send {BS}
++d::Send {BS}
+x::Send {BS}
++x::Send {BS}
+p::Send ^v
++p::Send ^v
+
 ; Map other keys
 +v::SendInput {Home}{Shift down}{End}{ShiftUp} ; ghetto "visual line mode entry"
 ^w::w ; just preventing w mapping closing windows until better solution is found! (holding down key)
@@ -49,6 +59,12 @@ i::
 	GoSub, InsertMode	
 +i::
 	SendInput, {Home}
+	GoSub, InsertMode
+o::
+	SendInput, {End}{Enter}
+	GoSub, InsertMode
++o::
+	SendInput, {Up}{End}{Enter}
 	GoSub, InsertMode
 ^[::
 Esc::	
